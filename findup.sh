@@ -2,6 +2,8 @@
 #Checks if there are duplicate files,
 #based on name, in a target directory
 #and deletes them.
+#In one line:
+#for file in `find $SOURCE_DIR -not -type d -exec basename {} \;`; do find $TARGET_DIR -name $file -exec rm {} \; ; done
 
 if [ ! -n "$1" ]; then
 	echo "Specify a source directory!"
