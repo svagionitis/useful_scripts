@@ -1,9 +1,9 @@
 #!/bin/bash
 #Checks if there are duplicate files,
 #based on name, in a target directory
-#and deletes them.
+#and prints some information.
 #In one line:
-#for file in `find $SOURCE_DIR -not -type d -exec basename {} \;`; do find $TARGET_DIR -name $file -exec rm {} \; ; done
+#for file in `find $SOURCE_DIR -not -type d -exec basename {} \;`; do find $TARGET_DIR -name $file -exec ls -la {} \; ; done
 
 if [ ! -n "$1" ]; then
 	echo "Specify a source directory!"
@@ -26,7 +26,7 @@ FILES_IN_SOURCE=`find $SOURCE_DIR -not -type d -exec basename {} \;`
 #in the target directory and delete it.
 for file in $FILES_IN_SOURCE
 do
-	echo "Seaching for $file ..."
-	find $TARGET_DIR -name $file -exec rm {} \;
+	echo -e "Seaching for \e[0;32m$file\e[0m..."
+	find $TARGET_DIR -name $file -exec ls -al {} \;
 done
 
